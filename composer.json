@@ -36,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "DebugBar\\Bridge\\Symfony\\": "tests/"
+            "DebugBar\\Bridge\\Symfony\\Tests\\": "tests/"
         }
     },
     "scripts": {

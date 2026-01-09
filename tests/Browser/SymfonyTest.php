@@ -1,6 +1,6 @@
 <?php
 
-namespace DebugBar\Bridge\Twig\Tests\Browser;
+namespace DebugBar\Bridge\Symfony\Tests\Browser;
 
 
 class SymfonyTest extends AbstractBrowserTestcase

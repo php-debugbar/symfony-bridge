@@ -1,6 +1,6 @@
 <?php
 
-namespace DebugBar\Bridge\Twig\Tests\Browser;
+namespace DebugBar\Bridge\Symfony\Tests\Browser;
 
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Panther\DomCrawler\Link;
