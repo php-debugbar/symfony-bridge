@@ -123,11 +123,7 @@ class SymfonyRequestCollector extends RequestDataCollector
         $data = $this->hideMaskedValues($data);
         foreach ($data as $key => $var) {
             if (!is_string($data[$key])) {
-                if ($this->isHtmlVarDumperUsed()) {
-                    $data[$key] = $this->getVarDumper()->renderVar($var);
-                } else {
-                    $data[$key] = $this->getDataFormatter()->formatVar($var);
-                }
+                $data[$key] = $this->getDataFormatter()->formatVar($var);
             }
         }
 
