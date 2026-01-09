@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "DebugBar\\Bridge\\Twig\\": "src/"
+            "DebugBar\\Bridge\\Symfony\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DebugBar\\Bridge\\Twig\\Tests\\": "tests/"
+            "DebugBar\\Bridge\\Symfony\\": "tests/"
         }
     },
     "scripts": {
