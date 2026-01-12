@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DebugBar\Bridge\Symfony\Tests;
 
 use DebugBar\Bridge\Symfony\SymfonyRequestCollector;
+use DebugBar\DataFormatter\DataFormatter;
 use Symfony\Component\HttpFoundation\Request;
 
 class SymfonyRequestCollectorTest extends DebugBarTestCase
@@ -14,7 +15,7 @@ class SymfonyRequestCollectorTest extends DebugBarTestCase
         $symfonyRequest = Request::create('/index.php');
 
         $collector = new SymfonyRequestCollector($symfonyRequest);
-        $collector->useHtmlVarDumper(false);
+        $collector->setDataFormatter(new DataFormatter());
 
         $data = $collector->collect();
 
@@ -37,7 +38,7 @@ class SymfonyRequestCollectorTest extends DebugBarTestCase
         ]);
 
         $collector = new SymfonyRequestCollector($symfonyRequest);
-        $collector->useHtmlVarDumper(false);
+        $collector->setDataFormatter(new DataFormatter());
 
         $data = $collector->collect();
 
@@ -55,7 +56,7 @@ class SymfonyRequestCollectorTest extends DebugBarTestCase
         ]);
 
         $collector = new SymfonyRequestCollector($symfonyRequest);
-        $collector->useHtmlVarDumper(false);
+        $collector->setDataFormatter(new DataFormatter());
         $collector->addMaskedKeys(['masked']);
 
         $data = $collector->collect();
