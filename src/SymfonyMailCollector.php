@@ -7,6 +7,7 @@ namespace DebugBar\Bridge\Symfony;
 use DebugBar\DataCollector\AssetProvider;
 use DebugBar\DataCollector\DataCollector;
 use DebugBar\DataCollector\Renderable;
+use DebugBar\DataCollector\Resettable;
 use Symfony\Component\Mime\Part\AbstractPart;
 
 /**
@@ -14,11 +15,16 @@ use Symfony\Component\Mime\Part\AbstractPart;
  *
  * https://github.com/symfony/mailer
  */
-class SymfonyMailCollector extends DataCollector implements Renderable, AssetProvider
+class SymfonyMailCollector extends DataCollector implements Renderable, AssetProvider, Resettable
 {
     private array $messages = [];
 
     private bool $showBody = false;
+
+    public function reset(): void
+    {
+        $this->messages = [];
+    }
 
     public function addSymfonyMessage(\Symfony\Component\Mailer\SentMessage $message): void
     {
