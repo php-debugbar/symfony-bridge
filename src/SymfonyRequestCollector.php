@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DebugBar\Bridge\Symfony;
 
 use DebugBar\DataCollector\RequestDataCollector;
+use DebugBar\DataCollector\Resettable;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
  * Based on \Symfony\Component\HttpKernel\DataCollector\RequestDataCollector by Fabien Potencier <fabien@symfony.com>
  *
  */
-class SymfonyRequestCollector extends RequestDataCollector
+class SymfonyRequestCollector extends RequestDataCollector implements Resettable
 {
     protected Request $request;
     protected ?Response $response;
@@ -26,6 +27,16 @@ class SymfonyRequestCollector extends RequestDataCollector
         $this->request = $request;
         $this->response = $response;
         parent::__construct();
+    }
+
+    public function reset(): void
+    {
+        $this->response = null;
+    }
+
+    public function setRequest(Request $request): void
+    {
+        $this->request = $request;
     }
 
     public function setResponse(Response $response): void
